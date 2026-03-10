@@ -1,4 +1,4 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig, devices } from "@playwright/test";
 
 /**
  * Read environment variables from file.
@@ -12,9 +12,10 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: './tests',
-  /* Run tests in files in parallel */
-  fullyParallel: true,
+  testDir: "./tests",
+  /* Run tests in files in sequence */
+  workers: 1,
+  fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
@@ -22,53 +23,61 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: "html",
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     headless: true,
 
-    slowMo: 1000,
+    launchOptions: {
+      slowMo: 1000,
+    },
 
     // Sets the default viewport size for all tests
     viewport: { width: 1920, height: 1080 },
-    
+
     /* Base URL to use in actions like `await page.goto('')`. */
-    baseURL: 'https://hpo-dataverse-staging.rdmc.unc.edu/',
+    baseURL: "https://hpo-dataverse-staging.rdmc.unc.edu/",
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace: "on",
 
     /* Always collect video and screenshots, even when tests pass. See https://playwright.dev/docs/video-and-screenshots */
     video: {
-      mode: 'on',
+      mode: "on",
       size: { width: 1920, height: 1080 },
     },
 
     screenshot: {
-      mode: 'on',
+      mode: "on",
       fullPage: true,
     },
   },
 
   /* Configure the output directory for test artifacts such as screenshots, videos, traces, etc. */
-  outputDir: 'test-results/',
+  outputDir: "test-results/",
 
   /* Configure projects for major browsers */
   projects: [
+    { name: "setup", testMatch: /.*\.setup\.ts/ },
     {
-      name: 'chromium',
-      use: { browserName: 'chromium', channel: 'chrome' },
+      name: "chromium",
+      use: {
+        browserName: "chromium",
+        channel: "chrome",
+        storageState: "playwright/.auth/user.json",
+      },
+      dependencies: ["setup"],
     },
 
-    {
-      name: 'firefox',
-      use: { browserName: 'firefox' },
-    },
+    // {
+    //   name: 'firefox',
+    //   use: { browserName: 'firefox' },
+    // },
 
-    {
-      name: 'webkit',
-      use: { browserName: 'webkit' },
-    },
+    // {
+    //   name: 'webkit',
+    //   use: { browserName: 'webkit' },
+    // },
 
     /* Test against mobile viewports. */
     // {

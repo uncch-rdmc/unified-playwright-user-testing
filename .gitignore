@@ -147,3 +147,6 @@ vite.config.ts.timestamp-*
 
 # MacOS
 .DS_Store
+
+# Sensitive Data
+sensitive-data/
