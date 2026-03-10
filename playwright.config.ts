@@ -25,28 +25,49 @@ export default defineConfig({
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+    headless: true,
+
+    slowMo: 1000,
+
+    // Sets the default viewport size for all tests
+    viewport: { width: 1920, height: 1080 },
+    
     /* Base URL to use in actions like `await page.goto('')`. */
-    // baseURL: 'http://localhost:3000',
+    baseURL: 'https://hpo-dataverse-staging.rdmc.unc.edu/',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+
+    /* Always collect video and screenshots, even when tests pass. See https://playwright.dev/docs/video-and-screenshots */
+    video: {
+      mode: 'on',
+      size: { width: 1920, height: 1080 },
+    },
+
+    screenshot: {
+      mode: 'on',
+      fullPage: true,
+    },
   },
+
+  /* Configure the output directory for test artifacts such as screenshots, videos, traces, etc. */
+  outputDir: 'test-results/',
 
   /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { browserName: 'chromium', channel: 'chrome' },
     },
 
     {
       name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      use: { browserName: 'firefox' },
     },
 
     {
       name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
+      use: { browserName: 'webkit' },
     },
 
     /* Test against mobile viewports. */
