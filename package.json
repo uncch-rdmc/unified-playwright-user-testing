@@ -1,0 +1,23 @@
+{
+  "name": "unified-playwright-user-testing",
+  "version": "1.0.0",
+  "description": "A centralized end-to-end testing framework for IQSS Dataverse and ecosystem integrations.  This repository serves as the unified hub for automated UI and functional testing. By leveraging Playwright, it provides a scalable scaffolding designed to validate diverse environments. Ranging from standard Dataverse to 21 CFR Part 11 compliant instances.",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uncch-rdmc/unified-playwright-user-testing.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/uncch-rdmc/unified-playwright-user-testing/issues"
+  },
+  "homepage": "https://github.com/uncch-rdmc/unified-playwright-user-testing#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^25.4.0"
+  }
+}
