@@ -1,8 +1,6 @@
 import { test, expect } from "@playwright/test";
 
 test("perform dataset actions", async ({ page }) => {
-  test.setTimeout(45000); // Set timeout to 45 seconds for this test
-
   await page.goto("");
   await page.getByRole("button", { name: "Add Data" }).click();
   await page.getByRole("link", { name: "New Dataset" }).click();

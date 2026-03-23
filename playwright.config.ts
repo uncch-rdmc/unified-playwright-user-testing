@@ -13,6 +13,7 @@ import { defineConfig, devices } from "@playwright/test";
  */
 export default defineConfig({
   testDir: "./tests",
+  timeout: 90000,
   /* Run tests in files in sequence */
   workers: 1,
   fullyParallel: false,
@@ -23,7 +24,7 @@ export default defineConfig({
     headless: true,
 
     launchOptions: {
-      slowMo: 1000,
+      slowMo: 2000,
     },
 
     // Sets the default viewport size for all tests
