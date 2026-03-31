@@ -84,8 +84,6 @@ test("perform dataset actions", async ({ page }) => {
     .getByRole("link", { name: "Playwright Test Dataset Modified" })
     .click();
   await page.getByRole("link", { name: "Publish Dataset" }).click();
-  await page.getByRole("button", { name: "Continue" }).isVisible();
-  console.log(
-    "Dataset finalization available, but not clicking to avoid irreversible action in test environment.",
-  );
+  await page.getByRole("button", { name: "Continue" }).click();
+  console.log("Dataset finalized and published.");
 });

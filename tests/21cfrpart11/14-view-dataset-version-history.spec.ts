@@ -11,5 +11,5 @@ test("view dataset version history", async ({ page }) => {
     .first()
     .click();
   await page.getByRole("link", { name: "Versions" }).click();
-  await page.getByRole("link", { name: "DRAFT" }).click();
+  await page.getByRole("link", { name: "1.0" }).last().click();
 });
