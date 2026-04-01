@@ -1,11 +1,11 @@
 ```yaml
-Title: "Shibboleth Auth"
+Title: "01. Shibboleth Auth"
 Author: "Snehashish Reddy Manda"
 Email: "msreddy@unc.edu"
 Date: "April 1, 2026"
 ``` 
 
-# Shibboleth Auth
+# 01. Shibboleth Auth
 
 The default Dataverse installation does not come with Shibboleth 2FA protection. But, HPO Dataverse is protected by UNC Shibboleth 2FA. Matter of fact, it is the only possible way to log into that dataverse installation
 
